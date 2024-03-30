@@ -22,11 +22,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
 
 
+// data imports 
+import User from "./models/User.js";
+import Product from './models/Product.js';
+import ProductStat from './models/ProductStat.js';
+import { dataUser, dataProduct, dataProductStat } from './data/index.js';
+
 /* Routes */
 app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
-app.use("/sales", salesRoutes);
+app.use("/sales", salesRoutes); 
 
 /* Mongoose Setup */
 const PORT = process.env.PORT || 9000 ; 
@@ -35,6 +41,10 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true ,
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port : ${PORT}`));
+    /* ONLY ADD DATA ONE TIME */
+    //Product.insertMany(dataProduct);
+    //ProductStat.insertMany(dataProductStat); 
+    //User.insertMany(dataUser);  
 }).catch((error) => console.log(`${error} did not connect`));
 
-
+ 
