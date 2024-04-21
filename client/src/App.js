@@ -8,6 +8,7 @@ import Dashboard from "scenes/Dashboard";
 import Products from "scenes/products";
 import Layout from "scenes/layout";
 import Customers from "scenes/Customers";
+import Transactions from "scenes/transactions"
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/products" element={<Products />} />
               <Route path="/customers" element={<Customers />} />
+              <Route path="/transactions" element={<Transactions />} />
             </Route>
 
           </Routes>
